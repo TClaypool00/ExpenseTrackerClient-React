@@ -1,30 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+$black : #272727;
+$white: #FFF;
+$yellow: #fddb3a;
+$blue: #DDD;
+$green: #16a085;
 
 * {
-    box-sizing: border-box;
     margin: 0;
-    padding:  0;
+    padding: 0;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: #272727;
+    background: $blue;
+    font-family: "Montserrat", "Roboto" sans-serif;
+    color: $black;
+}
+
+h2 {
+    padding: 1em 1em;
+    text-align: center;
 }
 
 #navbar {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
+    margin-bottom: 2em;
     a {
-        color: #f6f4e6;
+        color: $black;
         text-decoration: none;
         font-size: 1.2em;
         text-transform: uppercase;
@@ -33,41 +37,92 @@ body {
         width: 80px;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
-        &:hover {
-            color: #fddb3a;
-        }
+
         &:nth-child(1):hover ~ .dot {
-            -webkit-transform: translateX(30px);
+            -webkit-transform: transl8ateX(30px);
             transform: translateX(30px);
             -webkit-transition: all 0.2s ease-in-out;
             transition: all 0.2s ease-in-out;
             opacity: 1;
         }
+
         &:nth-child(2):hover ~ .dot {
-            -webkit-transform: translateX(200px);
-            transform: translateX(200px);
+            -webkit-transform: translateX(110px);
+            transform: translateX(110px);
             -webkit-transition: all 0.2s ease-in-out;
             transition: all 0.2s ease-in-out;
             opacity: 1;
         }
-        &:nth-child(3):hover ~ .dot {
-            -webkit-transform: translateX(285px);
-        transform: translateX(285px);
-        -webkit-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
-        opacity: 1;
+
+        &:hover {
+            color: $yellow;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: $yellow;
+            border-radius: 50%;
+            opacity: 0;
+            -webkit-transform: translateX(30px);
+            transform: translateX(30px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
         }
     }
+}
 
-    .dot {
-        width: 6px;
-        height: 6px;
-        background: #fddb3a;
-        border-radius: 50%;
-        opacity: 0;
-        -webkit-transform: translateX(30px);
-        transform: translateX(30px);
-        -webkit-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
+.box {
+    position: relative;
+    margin: 5% auto;
+    width: 40em;
+    height: 35em;
+    background: $white;
+    border-radius: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 1em;
+}
+
+input {
+    display: block;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+    padding: 1.5%;
+    width: 15em;
+    height: 25%;
+    border: none;
+    border-bottom: 1px solid #AAA;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: inherit;
+    transition: 0.2s ease;
+    &:focus {
+        border-bottom: 2px solid $yellow;
+        color: $black;
+        transition: 0.2s, ease;
+    }
+}
+
+.btn {
+    width: 25%;
+    height: 3em;
+    background-color: $green;
+    border: none;
+    border-radius: 2%;
+    color: $white;
+    font-family: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+    &:hover, &:focus {
+        opacity: 0.8;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        transition: 0.1s ease;
+    }
+    &:active {
+        opacity: 1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        transition: 0.1s ease;
     }
 }

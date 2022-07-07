@@ -7,10 +7,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path='/account/register' component={Register} />
-        <Route path="/account/login" component={Login} />
-      </Routes>
+      <div className="box">
+        <Routes>
+          <Route path='/account/register' element={<Register />} />
+          <Route path="/account/login" element={<Login />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
