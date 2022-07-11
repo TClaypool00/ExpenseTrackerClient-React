@@ -28,19 +28,17 @@ h2 {
 #navbar {
     margin-bottom: 2em;
     a {
-        @media only screen and (max-width: 400px) {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 2% 0;
-        }
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 2% 0;
         color: $black;
         text-decoration: none;
         font-size: 1.2em;
         text-transform: uppercase;
         font-weight: 500;
-        display: inline-block;
-        width: 80px;
+        //display: inline-block;
+        //width: 80px;
         -webkit-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
 
@@ -76,13 +74,26 @@ h2 {
             transition: all 0.2s ease-in-out;
         }
     }
+
+    i.fa {
+        top: 1%;
+        position: absolute;
+        left: 91%;
+        font-size: 168%;
+    }
+
+    #dropDown {
+        display: none;
+    }
+
+    #logo {
+        background-color: $green;
+    }
 }
 
 .box {
     position: relative;
     margin: 5% auto;
-    //width: 40em;
-    //height: 35em;
     background: $white;
     border-radius: 1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
