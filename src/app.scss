@@ -26,7 +26,6 @@ h2 {
 }
 
 #navbar {
-    margin-bottom: 2em;
     a {
         display: block;
         width: 100%;
@@ -93,11 +92,10 @@ h2 {
 
 .box {
     position: relative;
-    margin: 5% auto;
     background: $white;
-    border-radius: 1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     padding: 1em;
+    height: 75em;
 }
 
 input {
