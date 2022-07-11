@@ -1,14 +1,6 @@
+import { showHide } from "../../Helper";
+
 const Register = () => {
-    function hideShowForm() {
-        const loginForm = document.getElementById('loginForm');
-
-        if (loginForm.style.display === 'none') {
-            loginForm.style.display = 'block';
-        } else {
-            loginForm.style.display = 'none';
-        }
-    }
-
     return (
         <>
             <form method="post" id="registerForm">
@@ -24,7 +16,7 @@ const Register = () => {
                 <button type="submit" className="btn" id="btnRegister">Register</button>
             </form>                        
 
-            <button className="btn" id="signWithEmail" onClick={hideShowForm}>Sign in with email</button>
+            <button className="btn" id="signWithEmail" onClick={() => showHide('loginForm')} >Sign in with email</button>
 
             <form method="post" id="loginForm">
                 <h2>Login</h2>
@@ -34,9 +26,9 @@ const Register = () => {
                 <button type="submit" className="btn" id="btnLogin">Login</button>
             </form>
 
-            <button className="btn twitter-blue">Sign in with Google</button>
+            <button className="btn google-yellow">Sign in with Google</button>
             <button className="btn facebook-blue">Sign in with Facebook</button>
-            <button className="btn google-yellow">Sign in with Twitter</button>
+            <button className="btn twitter-blue">Sign in with Twitter</button>
         </>
     );
 }
