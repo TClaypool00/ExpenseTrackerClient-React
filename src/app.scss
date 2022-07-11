@@ -28,6 +28,12 @@ h2 {
 #navbar {
     margin-bottom: 2em;
     a {
+        @media only screen and (max-width: 400px) {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 2% 0;
+        }
         color: $black;
         text-decoration: none;
         font-size: 1.2em;
@@ -75,8 +81,8 @@ h2 {
 .box {
     position: relative;
     margin: 5% auto;
-    width: 40em;
-    height: 35em;
+    //width: 40em;
+    //height: 35em;
     background: $white;
     border-radius: 1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -87,8 +93,8 @@ input {
     display: block;
     margin-bottom: 2em;
     box-sizing: border-box;
-    padding: 1.5%;
-    width: 15em;
+    padding: 2%;
+    width: 100%;
     height: 25%;
     border: none;
     border-bottom: 1px solid #AAA;
@@ -104,8 +110,8 @@ input {
 }
 
 .btn {
-    width: 25%;
-    height: 3em;
+    width: 100%;
+    height: 3.75em;
     background-color: $green;
     border: none;
     border-radius: 2%;
@@ -114,6 +120,7 @@ input {
     font-weight: 500;
     text-transform: uppercase;
     transition: 0.1s ease;
+    margin-top: 3em;
     cursor: pointer;
     &:hover, &:focus {
         opacity: 0.8;
@@ -125,4 +132,24 @@ input {
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
         transition: 0.1s ease;
     }
+}
+
+#registerForm {
+    margin-bottom: 5em;
+}
+
+#loginForm {
+    display: none;
+}
+
+.facebook-blue {
+    background-color: #4267B2;
+}
+
+.twitter-blue {
+    background-color: #1DA1F2;
+}
+
+.google-yellow {
+    background-color: #F4B400;
 }
