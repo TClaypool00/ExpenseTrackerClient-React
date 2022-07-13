@@ -20,6 +20,17 @@ body {
     color: $black;
 }
 
+#error {
+    color: red;
+}
+
+#success {
+    color: rgb(0, 81, 255);
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
 h2 {
     padding: 1em 1em;
     text-align: center;
@@ -145,10 +156,6 @@ input {
 
 #registerForm {
     margin-bottom: 5em;
-}
-
-#loginForm {
-    display: none;
 }
 
 .facebook-blue {

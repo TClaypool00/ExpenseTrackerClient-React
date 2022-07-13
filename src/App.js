@@ -7,6 +7,8 @@ function App() {
     <Router>
       <Navbar />
       <div className="box">
+        <p id="error"></p>
+        <p id="success"></p>
         <Routes>
           <Route path='/account/register' element={<Register />} />
         </Routes>
