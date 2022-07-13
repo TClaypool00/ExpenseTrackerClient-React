@@ -5,7 +5,7 @@ const Navbar = () =>{
 
     return (
         <nav id="navbar">
-            <a id="logo" href="#">Expense Tracker</a>
+            <p id="logo">Expense Tracker</p>
                 <div id="dropDown">
                 <Link to="/account/register">Register</Link>
                 <div className="dot"></div>
