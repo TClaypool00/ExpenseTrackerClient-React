@@ -3,6 +3,7 @@ import { showHide } from "../../Helper";
 import { RegisterModel } from "../../models/RegisterModel";
 import { create, loginApi } from '../../API';
 import { Login } from "../../models/Login";
+import {  useNavigate } from 'react-router-dom'
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -19,6 +20,7 @@ const Register = () => {
     const success = document.getElementById('success');
     const loginForm = document.getElementById('loginForm');
     const loginPasswordInput = document.getElementById('txtLoginPassword');
+    const nav = useNavigate();
 
     function registerUser(e) {
         e.preventDefault();
@@ -60,9 +62,12 @@ const Register = () => {
                 if (error.innerHTML !== '' ) {
                     error.innerHTML = '';
                 }
-                console.log(resp.data);
+                localStorage.setItem('user', JSON.stringify(resp.data.user));
+                nav('/');
             }).catch(err => {
                 error.innerHTML = err.response.data.message;
+                loginForm.getElementsByTagName('input')[1].value = '';
+                loginForm.getElementsByTagName('input')[1].focus();
             })
     }
 
