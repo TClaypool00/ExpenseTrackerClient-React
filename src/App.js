@@ -1,18 +1,31 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from './components/navbar/Navbar';
 import Register from "./Pages/account/Register";
+import Add from "./Pages/bills/Add";
+import { PrivateRoute } from './helpers/Routes/PrivateRoute';
+import { PublicRoute } from './helpers/Routes/PublicRoute';
+import { Fragment } from 'react'
+
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <div className="box">
-        <p id="error"></p>
-        <p id="success"></p>
-        <Routes>
-          <Route path='/account/register' element={<Register />} />
-        </Routes>
-      </div>
+      <Fragment>
+        <Navbar />
+        <div className="box">
+          <p id="error"></p>
+          <p id="success"></p>
+          <Routes>
+            <Route path='/' element={<PrivateRoute />}>
+              <Route path="/" element={<Add />} />
+            </Route>
+
+            <Route path="/account/register" element={<PublicRoute />}>
+              <Route path="/account/register" element={<Register />}></Route>
+            </Route>
+          </Routes>
+        </div>
+      </Fragment>
     </Router>
   );
 }
