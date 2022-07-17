@@ -1,14 +1,27 @@
 import {  Link } from "react-router-dom";
 import { showHide } from "../../Helper";
-import { userLoggedIn } from '../../helpers/Auth';
+import { userLoggedIn, getUserFirstName } from '../../helpers/Auth';
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+    const nav = useNavigate();
+
+    function logout() {
+        localStorage.removeItem('user');
+        nav('/account/register');
+    }
+
     return (
         <nav id="navbar">
             <p id="logo">Expense Tracker</p>
                 <div id="dropDown">
                 { userLoggedIn() ? (
-                    <Link to="/bills/add">Add a bill</Link>
+                    <>
+                        <p>Hi, {getUserFirstName()}!</p>
+                        <Link to="/bills/add">Add a bill</Link>
+                        <p onClick={logout}>Log out</p>                        
+                    </>
+                    
                 ) : (
                     <Link to="/account/register">Register</Link>
                 )}

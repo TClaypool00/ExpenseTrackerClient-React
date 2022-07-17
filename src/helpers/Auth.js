@@ -1,7 +1,17 @@
+var user = JSON.parse(localStorage.getItem('user'));
+
 export function userLoggedIn() {
-    return localStorage.getItem('user') ? true : false;
+    return user ? true : false;
 }
 
-export function logout() {
-    localStorage.removeItem('user');
+export function getUserId() {
+    return user.userId;
+}
+
+export function userIsAdmin() {
+    return user.isAdmin;
+}
+
+export function getUserFirstName() {
+    return user.firstName;
 }
