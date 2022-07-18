@@ -1,4 +1,4 @@
-var user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('user'));
 
 export function userLoggedIn() {
     return user ? true : false;
