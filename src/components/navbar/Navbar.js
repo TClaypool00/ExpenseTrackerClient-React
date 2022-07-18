@@ -1,7 +1,6 @@
-import {  Link } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { showHide } from "../../Helper";
 import { userLoggedIn, getUserFirstName } from '../../helpers/Auth';
-import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const nav = useNavigate();

@@ -12,20 +12,15 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <Navbar />
+        <Navbar />        
         <div className="box">
           <p id="error"></p>
           <p id="success"></p>
           <Routes>
-            <Route element={<PrivateRoute />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/bills/add" element={<Add />} />
-            </Route>
-
-            <Route element={<PublicRoute />}>
-              <Route path="/account/register" element={<Register />}></Route>
-            </Route>
-          </Routes>
+            <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path='/bills/add' element={<PrivateRoute><Add /></PrivateRoute>} />
+            <Route path='/account/register' element={<PublicRoute><Register /></PublicRoute>} />
+        </Routes>
         </div>
       </Fragment>
     </Router>
