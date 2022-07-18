@@ -15,3 +15,7 @@ export function userIsAdmin() {
 export function getUserFirstName() {
     return user.firstName;
 }
+
+export function getToken() {
+    return user.token;
+}
