@@ -5,17 +5,17 @@ export function userLoggedIn() {
 }
 
 export function getUserId() {
-    return user.userId;
+    return user ? user.userId : null;
 }
 
 export function userIsAdmin() {
-    return user.isAdmin;
+    return user ? user.isAdmin : null;
 }
 
 export function getUserFirstName() {
-    return user.firstName;
+    return user ? user.firstName : null;
 }
 
 export function getToken() {
-    return user.token;
+    return user ? user.token : null;
 }
