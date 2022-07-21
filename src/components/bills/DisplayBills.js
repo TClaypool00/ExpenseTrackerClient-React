@@ -1,19 +1,22 @@
 const DisplayBills = ({ bills }) => {
     if (bills.length > 0) {
-        bills.map((bill) => {
-            return (
-                <div key={bill.billId}>
-                    <p>Nickname: {bill.billName}</p>
-                    <p>Amount: {bill.amountDue}</p>
-                    <p>Company: {bill.companyName}</p>
-                    <p>Due date: {bill.dateDue}</p>
-                    <label>
-                        Paid?
-                        <input type="checkbox" checked={bill.isPaid} />
-                    </label>
-                </div>
-            )
-        })
+        return (
+            <div id="bills" className="expenses">
+                {bills.map(bill => (
+                    <div key={bill.billId}>
+                        <p>{bill.billName}</p>
+                        <p>{bill.amountDue}</p>
+                        <label htmlFor={"billIsPaid" + bill.billId}>Is paid? </label>
+                        <input type="checkbox" name={"billIsPaid" + bill.billId} checked={bill.isPaid} readOnly />
+
+                        <label htmlFor={"billIsLate" + bill.billId}>Is late? </label>
+                        <input type="checkbox" name={"billIsLate" + bill.billId} checked={bill.isLate} readOnly />
+
+                        <button>Pay</button>
+                    </div>
+                ))}
+            </div>
+        )
     } else {
         return <p>No bills</p>
     }
