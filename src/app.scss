@@ -109,7 +109,8 @@ h2 {
     height: 75em;
 }
 
-input {
+input[type="text"], input[type="email"],
+input[type="password"], input[type="tel"] {
     display: block;
     margin-bottom: 2em;
     box-sizing: border-box;
