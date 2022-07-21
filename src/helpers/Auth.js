@@ -19,3 +19,12 @@ export function getUserFirstName() {
 export function getToken() {
     return user ? user.token : null;
 }
+
+export function tokenExpired(error) {
+    if (error) {
+        if (error.response.data.message === 'Expired token') {
+            localStorage.removeItem('user');
+            window.location.reload();
+        }
+    }
+}
