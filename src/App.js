@@ -20,7 +20,7 @@ function App() {
             <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
             <Route path='/bills/add' element={<PrivateRoute><Add /></PrivateRoute>} />
             <Route path='/account/register' element={<PublicRoute><Register /></PublicRoute>} />
-        </Routes>
+          </Routes>
         </div>
       </Fragment>
     </Router>
