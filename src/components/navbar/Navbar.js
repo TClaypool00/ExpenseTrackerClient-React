@@ -1,13 +1,11 @@
-import {  Link, useNavigate } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { showHide } from "../../Helper";
 import { userLoggedIn, getUserFirstName } from '../../helpers/Auth';
 
 const Navbar = () => {
-    const nav = useNavigate();
-
     function logout() {
         localStorage.removeItem('user');
-        nav('/account/register');
+        window.location.reload();
     }
 
     return (
