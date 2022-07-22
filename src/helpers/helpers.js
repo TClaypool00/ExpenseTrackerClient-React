@@ -8,10 +8,12 @@ export function getSuccessMessage(success) {
 
 export function textFadeOut(message) {
     if (message.classList.contains('fade-out')) {
-        message.classList.add('fade-out');
+        message.classList.remove('fade-out');
     }
 
+    message.classList.add('fade-out');
+
     setTimeout(function() {
-        message.classList.add('fade-out');
+        message.innerHTML = '';
     }, 5000)
 }
