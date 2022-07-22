@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { showHide } from "../../Helper";
 import { RegisterModel } from "../../models/RegisterModel";
-import { create, loginApi } from '../../API';
+import { registerApi, loginApi } from '../../API';
 import { Login } from "../../models/Login";
 
 const Register = () => {
@@ -22,8 +22,8 @@ const Register = () => {
 
     function registerUser(e) {
         e.preventDefault();
-        let register = new RegisterModel(firstName, lastName, email, phoneNum, password, confirmPassword, false);
-        create('users', register)
+        let registerModel = new RegisterModel(firstName, lastName, email, phoneNum, password, confirmPassword, false);
+        registerApi(registerModel)
             .then(response => {
                 if (error.innerHTML !== '') {
                     error.innerHTML = '';

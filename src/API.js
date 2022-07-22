@@ -8,11 +8,11 @@ const headers = {
 }
 
 export async function create(modelPath, model) {
-    return axios.post(`${apiBaseURL}${modelPath}/create.php`, model);
+    return axios.post(`${apiBaseURL}${modelPath}/create.php`, model, { headers: headers });
 }
 
 export async function loginApi(model) {
-    return axios.post(`${apiBaseURL}/users/login.php`, model)
+    return axios.post(`${apiBaseURL}users/login.php`, model)
 }
 
 export async function getEverything() {
@@ -21,4 +21,8 @@ export async function getEverything() {
 
 export async function companyDropDown() {
     return axios.get(`${apiBaseURL}/companies/drop_down.php?userId=${getUserId()}`, {headers: headers})
+}
+
+export async function registerApi(model) {
+    return axios.post(`${apiBaseURL}users/create.php`, model)
 }
