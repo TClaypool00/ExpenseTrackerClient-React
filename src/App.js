@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from './components/navbar/Navbar';
 import Register from "./Pages/account/Register";
 import Add from "./Pages/bills/Add";
+import AddSub from "./Pages/subscriptions/Add";
+import AddLoan from './Pages/loans/AddLoan';
 import Home from './Pages/Home';
 import { PrivateRoute } from './helpers/Routes/PrivateRoute';
 import { PublicRoute } from './helpers/Routes/PublicRoute';
@@ -20,6 +22,8 @@ function App() {
             <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
             <Route path='/bills/add' element={<PrivateRoute><Add /></PrivateRoute>} />
             <Route path='/account/register' element={<PublicRoute><Register /></PublicRoute>} />
+            <Route path='/subscriptions/add' element={<PrivateRoute><AddSub /></PrivateRoute>} />
+            <Route path='/loans/add' element={<PrivateRoute><AddLoan /></PrivateRoute>} />
           </Routes>
         </div>
       </Fragment>
