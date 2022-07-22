@@ -10,7 +10,7 @@ const Navbar = () => {
 
     return (
         <nav id="navbar">
-            <p id="logo">Expense Tracker</p>
+            <Link to='/' id='logo'>Expense Tracker</Link>
                 <div id="dropDown">
                 { userLoggedIn() ? (
                     <>
