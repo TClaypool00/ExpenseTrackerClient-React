@@ -1,13 +1,12 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
+import DropDown from "../../components/companies/DropDown"
 import { companyDropDown } from '../../API';
 import { tokenExpired } from '../../helpers/Auth';
-import DropDown from '../../components/companies/DropDown';
 
-function Add() {
-    const [billName, setBillName] = useState('');
+function AddSub() {
+    const [subName, setSubName] = useState('');
     const [amount, setAmount] = useState(0);
-    const [date, setDate] = useState('');
+    const [dateDue, setDateDue] = useState('');
     const [companyId, setCompanyId] = useState(0);
     const [companies, setCompanies] = useState([]);
 
@@ -25,11 +24,11 @@ function Add() {
 
     return (
         <>
-            <h2>Add a bill</h2>
+            <h2>Add a subscription</h2>
             <form method="post">
-                <input type="text" id='txtBillName' onChange={e => setBillName(e.target.value)} placeholder='Nickname' />
+                <input type="text" id='txtSubName' onChange={e => setSubName(e.target.value)} placeholder='Nickname' />
                 <input type="number" id='amountDue' onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
-                <input type="date" id="dateDue" onChange={e => setDate(e.target.value)} />
+                <input type="date" id="dateDue" onChange={e => setDateDue(e.target.value)} />
                 <DropDown companies={companies} />
                 <button className="btn">Add</button>
             </form>
@@ -37,4 +36,4 @@ function Add() {
     )
 }
 
-export default Add
+export default AddSub

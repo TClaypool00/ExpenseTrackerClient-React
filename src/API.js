@@ -18,3 +18,7 @@ export async function loginApi(model) {
 export async function getEverything() {
     return axios.get(`${apiBaseURL}/all/get_all.php?userId=${getUserId()}`, { headers: headers })
 }
+
+export async function companyDropDown() {
+    return axios.get(`${apiBaseURL}/companies/drop_down.php?userId=${getUserId()}`, {headers: headers})
+}

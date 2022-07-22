@@ -16,6 +16,8 @@ const Navbar = () => {
                     <>
                         <p>Hi, {getUserFirstName()}!</p>
                         <Link to="/bills/add">Add a bill</Link>
+                        <Link to='/subscriptions/add'>Add a subscription</Link>
+                        <Link to='/loans/add'>Add a loan</Link>
                         <p onClick={logout}>Log out</p>                        
                     </>
                     
