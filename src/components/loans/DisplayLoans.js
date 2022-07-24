@@ -13,6 +13,7 @@ const DisplayLoans = ({ loans }) => {
                         <label htmlFor={"loanIsLate" + loan.loanIdd}>Is late? </label>
                         <input type="checkbox" name={"loanIsLate" + loan.loanId} checked={loan.isLate} readOnly />
 
+                        <a href={'/loans/' + loan.loanId}>Details</a>
                         <button>Pay</button>
                     </div>
                 ))}

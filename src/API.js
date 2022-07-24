@@ -11,6 +11,10 @@ export async function create(modelPath, model) {
     return axios.post(`${apiBaseURL}${modelPath}/create.php`, model, { headers: headers });
 }
 
+export async function get(modelPath, id) {
+    return axios.get(`${apiBaseURL}${modelPath}/${id}`, {headers : headers});
+}
+
 export async function loginApi(model) {
     return axios.post(`${apiBaseURL}users/login.php`, model)
 }

@@ -12,6 +12,7 @@ const DisplayBills = ({ bills }) => {
                         <label htmlFor={"billIsLate" + bill.billId}>Is late? </label>
                         <input type="checkbox" name={"billIsLate" + bill.billId} checked={bill.isLate} readOnly />
 
+                        <a href={'/bills/' + bill.billId}>Details</a>
                         <button>Pay</button>
                     </div>
                 ))}

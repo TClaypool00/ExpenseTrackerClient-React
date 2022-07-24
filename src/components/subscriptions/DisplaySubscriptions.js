@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function DisplaySubscriptions({ subs }) {
     if (subs.length > 0) {
         return (
@@ -12,7 +14,8 @@ function DisplaySubscriptions({ subs }) {
 
                         <label htmlFor={"subIsLate" + sub.subscriptionId}>Is late? </label>
                         <input type="checkbox" name={"subIsLate" + sub.subscriptionId} checked={sub.isLate} readOnly />
-
+                        <Link to={'/subscriptions/' + sub.subscriptionId}>Details</Link>
+                        
                         <button>Pay</button>
                     </div>
                 ))}
