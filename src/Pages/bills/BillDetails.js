@@ -7,6 +7,8 @@ import { textFadeOut, getErrorMessage, getSuccessMessage } from '../../helpers/h
 function BillDetails() {
     const [bill, setBill] = useState({});
     const params = useParams();
+    const [isEdit, setEdit] = useState(false);
+
 
     useEffect(() => {
         const error = document.getElementById('error');
@@ -21,10 +23,35 @@ function BillDetails() {
                 error.innerHTML = getErrorMessage(err);
                 textFadeOut(error);
             })
-    })
+    }, [])
 
     return (
-        <div>BillDetails</div>
+        <>
+            <h2>{bill.billName}</h2>
+            <label htmlFor="txtBillName">
+                Nickname:
+                <p>{bill.billName}</p>
+            </label>
+            <label htmlFor="numAmountDue">
+                Amount due:
+                <p>{bill.amountDue}</p>
+            </label>
+            
+            <label htmlFor="chkIsActive">
+                Active?
+                <p>{bill.isActive ? 'Yes' : 'No'}</p>
+            </label>
+
+            <label htmlFor="company">
+                Company
+                <p>{bill.companyName}</p>
+            </label>
+
+            <label htmlFor="dueDate">
+                Next due date
+                <p>{bill.dateDue}</p>
+            </label>
+        </>
     )
 }
 

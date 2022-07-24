@@ -12,7 +12,7 @@ export async function create(modelPath, model) {
 }
 
 export async function get(modelPath, id) {
-    return axios.get(`${apiBaseURL}${modelPath}/${id}`, {headers : headers});
+    return axios.get(`${apiBaseURL}${modelPath}/get.php?id=${id}`, {headers : headers});
 }
 
 export async function loginApi(model) {

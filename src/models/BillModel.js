@@ -1,10 +1,13 @@
 export class BillModel {
-    constructor(billName, amount, date, companyId, userId){
+    constructor(billName, amount, date, companyId){
         this.billName = billName;
         this.amountDue = amount;
         this.companyId = companyId;
         this.dueDate = date;
-        this.userId = userId;
     }
 
+}
+
+export class PostBill {
+    billName = ''
 }
