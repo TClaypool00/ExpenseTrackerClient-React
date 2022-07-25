@@ -1,56 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
-import { get } from '../../API';
-import { tokenExpired } from '../../helpers/Auth';
-import { textFadeOut, getErrorMessage, getSuccessMessage } from '../../helpers/helpers';
+import Details from '../../components/bills/Details';
+import BillForm from '../../components/bills/BillForm';
 
 function BillDetails() {
-    const [bill, setBill] = useState({});
     const params = useParams();
-    const [isEdit, setEdit] = useState(false);
 
+    function changeEdit() {
+        if (isEdit) {
+            form.current.getElementsByTagName('input')[0].innerHTML = bill.billName;
+            setEdit(false);
+        } else {
+            setEdit(true);
+        }
+    }
 
-    useEffect(() => {
-        const error = document.getElementById('error');
-
-        get('bills', params.id)
-            .then(resp => {
-                console.log(resp.data);
-                setBill(resp.data);
-            })
-            .catch(err => {
-                tokenExpired(err);
-                error.innerHTML = getErrorMessage(err);
-                textFadeOut(error);
-            })
-    }, [])
+    function update() {
+        console.log('Updated');
+    }
 
     return (
         <>
             <h2>{bill.billName}</h2>
-            <label htmlFor="txtBillName">
-                Nickname:
-                <p>{bill.billName}</p>
-            </label>
-            <label htmlFor="numAmountDue">
-                Amount due:
-                <p>{bill.amountDue}</p>
-            </label>
             
-            <label htmlFor="chkIsActive">
-                Active?
-                <p>{bill.isActive ? 'Yes' : 'No'}</p>
-            </label>
+            <button className="btn" onClick={changeEdit}>{ isEdit ? 'View' : 'Edit' }</button>
 
-            <label htmlFor="company">
-                Company
-                <p>{bill.companyName}</p>
-            </label>
-
-            <label htmlFor="dueDate">
-                Next due date
-                <p>{bill.dateDue}</p>
-            </label>
+            { isEdit ? <BillForm billId={params.id} /> : <BillDetails /> }
         </>
     )
 }
