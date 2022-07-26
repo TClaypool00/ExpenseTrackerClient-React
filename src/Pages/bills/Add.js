@@ -2,7 +2,10 @@ import BillForm from '../../components/bills/BillForm';
 
 function Add() {    
     return (
-        <BillForm />        
+        <>
+            <h2>Add a bill</h2>
+            <BillForm />
+        </>
     )
 }
 

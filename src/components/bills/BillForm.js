@@ -1,51 +1,83 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import DropDown from '../../components/companies/DropDown';
-import { companyDropDown, get, create } from '../../API';
+import { companyDropDown, create, update } from '../../API';
 import { getErrorMessage, getSuccessMessage, textFadeOut } from '../../helpers/helpers';
+import { tokenExpired } from '../../helpers/Auth';
+import { BillModel } from '../../models/BillModel';
 
-function BillForm( { billId } ) {
-    const [bill, setBill] = useState({});
+function BillForm( { bill } ) {
     const [companyId, setCompanyId] = useState('');
     const [companies, setComapnies] = useState([]);
     const [billName, setBillName] = useState('');
-    const [amountDue, setAmount] = useState(0);
+    const [amountDue, setAmount] = useState('');
+    const [isActive, setActive] = useState(false);
     const [dateDue, setDate] = useState('');
+    const success = document.getElementById('success');
+    const errorMessage = document.getElementById('error');
 
     useEffect(() => {
         const error = document.getElementById('error');
 
-        if (billId) {
-            get('bills', billId)
-                .then(res => {
-                    setBill(res.data);
-                    setComapnies(res.data.company);
-                })
-                .catch(err => {
-                    error.innerHTML = getErrorMessage(err);
-                    textFadeOut(err);
-                })
-
-        } else {
+        if (!bill) {
             companyDropDown()
                 .then(resp => {
                     setComapnies(resp.data);
                 })
+                .catch(err => {
+                    tokenExpired(err);
+                    error.innerHTML = getErrorMessage(err);
+                    textFadeOut(error);                    
+                })
+        } else {
+            setComapnies(bill.company);
+            setCompanyId(bill.companyId);
+            setBillName(bill.billName)
+            setAmount(bill.amountDue);
+            setDate(bill.dateDue);
+            setActive(bill.isActive);
         }
-    }, [])
+    }, []);
 
-    const form = useRef(null);
+    function formSubmt(e) {
+        e.preventDefault();
+
+        const billModel = new BillModel(billName, amountDue, dateDue, companyId, isActive);
+
+        if (bill) {
+            update('bills', billModel, bill.billId)
+                .then(resp => {
+                    success.innerHTML = getSuccessMessage(resp);
+                    textFadeOut(success);
+                })
+                .catch(err => {
+                    errorMessage.innerHTML = getErrorMessage(err);
+                    textFadeOut(errorMessage);
+                })
+        } else {
+            create('bills', billModel)
+                .then(resp => {
+                    success.innerHTML = getSuccessMessage(resp);
+                    textFadeOut(success);
+                })
+                .catch(err => {
+                    errorMessage.innerHTML = getErrorMessage(err);
+                    textFadeOut(errorMessage);
+                })
+        }
+    }
 
     return (
-        <>
-            <form method="post" ref={form} >
-                <input type="text" id='txtBillName' value={billId ? bill.billName : ''} onChange={e => setBillName(e.target.value)} placeholder='Nickname' />
-                <input type="number" id='amountDue' value={billId ? bill.amountDue : ''} onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
-                <input type="date" id="dateDue" onChange={e => setDate(e.target.value)} />
-                <DropDown companies={companies} selectCompanyId={setCompanyId} companyId={companyId} />
-                <button type="submit" className="btn">{ billId ? 'Update' : 'Add' }</button>
-            </form>
-        </>
-    );
+        <form method="post" onSubmit={formSubmt} >            
+            <input type="text" id='txtBillName' value={billName}  onChange={e => setBillName(e.target.value)} placeholder='Nickname' />
+            <input type="number" id='amountDue' value={amountDue}  onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
+            <input type="date" id="dateDue" value={dateDue} onChange={e => setDate(e.target.value)} />
+            <DropDown companies={companies} selectCompanyId={setCompanyId} companyId={companyId} />
+            <label htmlFor="chckIsActive">Active
+                <input type="checkbox" name="chckIsActive" id="chckIsActive" onChange={e => setActive(e.target.value)} checked={isActive}/>
+            </label>
+            <button type="submit" className="btn">{ bill ? 'Update' : 'Add' }</button>
+        </form>
+    )
 }
 
 export default BillForm

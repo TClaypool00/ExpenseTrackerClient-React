@@ -15,8 +15,8 @@ export async function get(modelPath, id) {
     return axios.get(`${apiBaseURL}${modelPath}/get.php?id=${id}`, {headers : headers});
 }
 
-export async function loginApi(model) {
-    return axios.post(`${apiBaseURL}users/login.php`, model)
+export async function update(modelPath, model, id) {
+    return axios.put(`${apiBaseURL}${modelPath}/update.php?id=${id}`, model, { headers : headers });
 }
 
 export async function getEverything() {
@@ -25,6 +25,10 @@ export async function getEverything() {
 
 export async function companyDropDown() {
     return axios.get(`${apiBaseURL}/companies/drop_down.php?userId=${getUserId()}`, {headers: headers})
+}
+
+export async function loginApi(model) {
+    return axios.post(`${apiBaseURL}users/login.php`, model)
 }
 
 export async function registerApi(model) {
