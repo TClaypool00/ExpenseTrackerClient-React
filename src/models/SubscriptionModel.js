@@ -1,9 +1,9 @@
 export class SubscriptionModel {
-    constructor(name, amountDue, companyId, dueDate, userId) {
+    constructor(name, amountDue, companyId, dueDate, isActive) {
         this.name = name;
         this.amountDue = amountDue;
         this.companyId = companyId;
         this.dueDate = dueDate;
-        this.userId = userId;
+        this.isActive = isActive;
     }
 }
