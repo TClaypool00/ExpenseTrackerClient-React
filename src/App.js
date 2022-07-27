@@ -3,7 +3,7 @@ import Navbar from './components/navbar/Navbar';
 import Register from "./Pages/account/Register";
 import Add from "./Pages/bills/Add";
 import BillDetails from "./Pages/bills/BillDetails";
-import AddSub from "./Pages/subscriptions/Add";
+import AddSub from "./Pages/subscriptions/AddSub";
 import AddLoan from './Pages/loans/AddLoan';
 import Home from './Pages/Home';
 import { PrivateRoute } from './helpers/Routes/PrivateRoute';

@@ -20,14 +20,14 @@ export function LoanForm({ loan }) {
 
     useEffect(() => {
         if (loan) {
-            setCompanies(sub.comapnies);
-            setLoanName(sub.name);
-            setAmount(sub.monthlyAmountDue);
-            setTotalAmount(sub.totalAmountDue);
-            setRemaining(sub.remainingAmount);
-            setIsActive(sub.isActive);
-            setDateDue(sub.dateDue);
-            setCompanies(sub.comapnies);
+            setCompanies(loan.comapnies);
+            setLoanName(loan.name);
+            setAmount(loan.monthlyAmountDue);
+            setTotalAmount(loan.totalAmountDue);
+            setRemaining(loan.remainingAmount);
+            setIsActive(loan.isActive);
+            setDateDue(loan.dateDue);
+            setCompanies(loan.comapnies);
         } else {
             companyDropDown()
                 .then(resp => {

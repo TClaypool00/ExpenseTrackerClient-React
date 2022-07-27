@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useNavigate, useRef } from 'react'
 import DropDown from '../../components/companies/DropDown';
 import { companyDropDown, create, update } from '../../API';
 import { SubscriptionModel } from '../../models/SubscriptionModel';
@@ -15,6 +15,7 @@ function SubscriptionForm({ sub }) {
 
     const errorMessage = document.getElementById('error');
     const success = document.getElementById('success');
+    const form = useRef(null);
     const nav = useNavigate();
 
     useEffect(() => {
@@ -75,7 +76,7 @@ function SubscriptionForm({ sub }) {
     }
 
     return (
-        <form method="post" onSubmit={formSub}>
+        <form method="post" onSubmit={formSub} ref={form}>
             <input type="text" id='txtSubName' value={subName} onChange={e => setSubName(e.target.value)} placeholder='Nickname' />
             <input type="number" id='amountDue' value={amount} onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
             <input type="date" id="dateDue" value={dateDue} onChange={e => setDateDue(e.target.value)} />
