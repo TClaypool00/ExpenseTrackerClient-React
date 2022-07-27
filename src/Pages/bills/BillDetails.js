@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Details from '../../components/bills/Details';
 import BillForm from '../../components/bills/BillForm';
 import { tokenExpired } from '../../helpers/Auth';
-import { getErrorMessage, textFadeOut } from '../../helpers/helpers';
+import { getErrorMessage, textFadeOut, title } from '../../helpers/helpers';
 
 function BillDetails() {
     const params = useParams();
@@ -26,6 +26,8 @@ function BillDetails() {
         get('bills', params.id)
             .then(resp => {
                 setBill(resp.data);
+                document.title = title + resp.data.billName
+
             })
             .catch(err => {
                 tokenExpired(err);

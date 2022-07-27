@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { showHide } from "../../Helper";
 import { RegisterModel } from "../../models/RegisterModel";
 import { registerApi, loginApi } from '../../API';
 import { Login } from "../../models/Login";
+import { title } from '../../helpers/helpers'
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -19,6 +20,10 @@ const Register = () => {
     const success = document.getElementById('success');
     const loginForm = document.getElementById('loginForm');
     const loginPasswordInput = document.getElementById('txtLoginPassword');
+
+    useEffect(() => {
+        document.title = title + 'Register/Login'
+    })
 
     function registerUser(e) {
         e.preventDefault();

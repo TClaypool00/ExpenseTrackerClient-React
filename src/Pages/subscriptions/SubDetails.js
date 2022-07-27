@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import SubscriptionForm from '../../components/subscriptions/SubscriptionForm';
 import SubscriptionDetails from '../../components/subscriptions/SubscriptionDetails'
 import { tokenExpired } from '../../helpers/Auth';
-import { getErrorMessage, textFadeOut } from '../../helpers/helpers';
+import { getErrorMessage, textFadeOut, title } from '../../helpers/helpers';
 
 function SubDetails() {
     const params = useParams();
@@ -26,6 +26,7 @@ function SubDetails() {
         get('subscriptions', params.id)
             .then(resp => {
                 setSub(resp.data);
+                document.title = title + resp.data.name;
             })
             .catch(err => {                
                 tokenExpired(err);

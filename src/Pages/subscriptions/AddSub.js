@@ -1,6 +1,12 @@
-import SubscriptionForm from "../../components/subscriptions/SubscriptionForm"
+import SubscriptionForm from "../../components/subscriptions/SubscriptionForm";
+import { useEffect } from 'react';
+import { title } from '../../helpers/helpers';
 
-function AddSub() {      
+function AddSub() {
+    useEffect(() => {
+        document.title = title + 'Add a subscription';
+    })
+
     return (
         <>
             <h2>Add a subscription</h2>

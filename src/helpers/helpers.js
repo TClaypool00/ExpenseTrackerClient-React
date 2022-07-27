@@ -17,3 +17,5 @@ export function textFadeOut(message) {
         message.innerHTML = '';
     }, 5000)
 }
+
+export const title = 'Expense Tracker - ';

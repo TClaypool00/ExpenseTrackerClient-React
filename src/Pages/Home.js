@@ -5,15 +5,18 @@ import DisplayLoans from "../components/loans/DisplayLoans";
 import DisplaySubscriptions from "../components/subscriptions/DisplaySubscriptions";
 import DisplayMisc from "../components/misc/DisplayMisc";
 import { tokenExpired } from '../helpers/Auth';
+import { title } from '../helpers/helpers';
 
 function Home() {    
     const [bills, setBills] = useState([]);
     const [loans, setLoans] = useState({});
     const [subs, setSubs] = useState({})
     const [miscs, setMiscs] = useState({});
+
     
     useEffect(() => {
         const error = document.getElementById('error');
+        document.title = title + 'Home';
 
         getEverything()
             .then(resp => {

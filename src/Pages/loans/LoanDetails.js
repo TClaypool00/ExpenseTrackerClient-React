@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Details  from '../../components/loans/Details';
 import LoanForm from '../../components/loans/LoanForm';
 import { get } from "../../API";
-import { getErrorMessage, getSuccessMessage, textFadeOut } from "../../helpers/helpers";
+import { getErrorMessage, textFadeOut, title } from "../../helpers/helpers";
 import { tokenExpired } from "../../helpers/Auth";
 
 function LoanDetails() {
@@ -18,6 +18,7 @@ function LoanDetails() {
         get('loans', params.id)
             .then(resp => {
                 setLoan(resp.data);
+                document.title = title + resp.data.loanName;
             })
             .catch(err => {
                 tokenExpired(err);
