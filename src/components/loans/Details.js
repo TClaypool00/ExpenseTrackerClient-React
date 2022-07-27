@@ -5,7 +5,7 @@ function Details({ loan }) {
             <p>Monthly amount due: {loan.monthlyAmountDue}</p>
             <p>Total amount: {loan.totalAmountDue}</p>
             <p>Remaining amount: {loan.remainingAmount}</p>
-            <p>Active? {loan.isActive}</p>
+            <p>Active? {loan.isActive ? 'Yes' : 'No'}</p>
             <p>Company: {loan.companyName}</p>
         </>
     )

@@ -82,7 +82,7 @@ function SubscriptionForm({ sub }) {
             <input type="number" id='amountDue' value={amount} onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
             <input type="date" id="dateDue" value={dateDue} onChange={e => setDateDue(e.target.value)} />
             <label htmlFor="chckIsActive">Active? 
-                <input type="checkbox" name="chckIsActive" onChange={e => setIsActive(e.target.value)} checked={isActive} />;
+                <input type="checkbox" name="chckIsActive" onChange={e => setIsActive(e.target.value)} checked={isActive} />
             </label>
             <DropDown companies={companies} selectCompanyId={setCompanyId} companyId={companyId} />
             <button className="btn">{sub ? 'Update' : 'Add'}</button>

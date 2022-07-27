@@ -29,7 +29,7 @@ function BillForm( { bill } ) {
                     textFadeOut(error);                    
                 })
         } else {
-            setComapnies(bill.company);
+            setComapnies(bill.companies);
             setCompanyId(bill.companyId);
             setBillName(bill.billName)
             setAmount(bill.amountDue);
