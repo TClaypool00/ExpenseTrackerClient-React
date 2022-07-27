@@ -1,4 +1,4 @@
-import { LoanForm } from "../../components/loans/LoanForm"
+import LoanForm from "../../components/loans/LoanForm"
 
 function AddLoan() {    
     return (

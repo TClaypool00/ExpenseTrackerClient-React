@@ -5,7 +5,7 @@ import { getErrorMessage, getSuccessMessage, textFadeOut } from '../../helpers/h
 import { tokenExpired } from '../../helpers/Auth';
 import { LoanModel } from '../../models/LoanModel';
 
-export function LoanForm({ loan }) {
+function LoanForm({ loan }) {
     const [loanName, setLoanName] = useState('');
     const [amount, setAmount] = useState('');
     const [remainingAmt, setRemaining] = useState('');
@@ -20,14 +20,14 @@ export function LoanForm({ loan }) {
 
     useEffect(() => {
         if (loan) {
-            setCompanies(loan.comapnies);
-            setLoanName(loan.name);
+            setCompanies(loan.companies);
+            setLoanName(loan.loanName);
             setAmount(loan.monthlyAmountDue);
             setTotalAmount(loan.totalAmountDue);
             setRemaining(loan.remainingAmount);
             setIsActive(loan.isActive);
             setDateDue(loan.dateDue);
-            setCompanies(loan.comapnies);
+            setCompanyId(loan.companyId);
         } else {
             companyDropDown()
                 .then(resp => {
@@ -78,16 +78,9 @@ export function LoanForm({ loan }) {
             <input type="number" id="totalAmt" value={totalAmount} onChange={e => setTotalAmount(e.target.value)} placeholder='Total amount' />
             <input type="date" id="dateDue" value={dueDate} onChange={e => setDateDue(e.target.value)} />
             <DropDown companies={companies} selectCompanyId={setCompanyId} companyId={companyId} />
-            {
-                loan ?
-                <label htmlFor="chckIsActive">IsActive
-                    <input type="checkbox" name="chckIsActive" checked={isActive} onChange={e => setIsActive(e.target.value)} />
-                </label>
-
-                :
-                null
-            }
             <button type="submit" className='btn'>{ loan ? 'Update' : 'Add' }</button>
         </form>
     )
 }
+
+export default LoanForm

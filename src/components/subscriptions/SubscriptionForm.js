@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useNavigate, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import DropDown from '../../components/companies/DropDown';
 import { companyDropDown, create, update } from '../../API';
 import { SubscriptionModel } from '../../models/SubscriptionModel';
@@ -80,7 +81,7 @@ function SubscriptionForm({ sub }) {
             <input type="text" id='txtSubName' value={subName} onChange={e => setSubName(e.target.value)} placeholder='Nickname' />
             <input type="number" id='amountDue' value={amount} onChange={e => setAmount(e.target.value)} placeholder='Amount due' />
             <input type="date" id="dateDue" value={dateDue} onChange={e => setDateDue(e.target.value)} />
-            <label htmlFor="chckIsActive">
+            <label htmlFor="chckIsActive">Active? 
                 <input type="checkbox" name="chckIsActive" onChange={e => setIsActive(e.target.value)} checked={isActive} />;
             </label>
             <DropDown companies={companies} selectCompanyId={setCompanyId} companyId={companyId} />
